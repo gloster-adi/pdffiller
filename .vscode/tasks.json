@@ -1,0 +1,19 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Start Folio Fill - Gloster Document Studio",
+			"type": "shell",
+			"command": "powershell.exe",
+			"args": [
+				"-NoProfile",
+				"-ExecutionPolicy",
+				"Bypass",
+				"-Command",
+				"$node = Get-ChildItem \"$env:LOCALAPPDATA\\Microsoft\\WinGet\\Packages\\OpenJS.NodeJS.LTS*\" -Filter node.exe -Recurse -ErrorAction SilentlyContinue | Select-Object -First 1; if (-not $node) { throw 'Node.js LTS was not found for this user.' }; $env:PATH = \"$($node.DirectoryName);$env:PATH\"; npm.cmd run dev"
+			],
+			"isBackground": true,
+			"problemMatcher": []
+		}
+	]
+}
